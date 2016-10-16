@@ -48,7 +48,7 @@ public class SecondActivity extends AppCompatActivity {
 //            });
                 Message msg = Message.obtain();
                 msg.arg1 = i;
-                msg.obj = counter.parse(i);
+                msg.obj = counter.parse(i).trim();
                 uiHandler.sendMessage(msg);
 //            tv.setText(String.valueOf(i));
                 try {

@@ -90,6 +90,6 @@ public class Counter {
         }
         builder.append(" ");
         builder.append(parseLessThanThousand(one));
-        return builder.toString();
+        return builder.toString().trim();
     }
 }
