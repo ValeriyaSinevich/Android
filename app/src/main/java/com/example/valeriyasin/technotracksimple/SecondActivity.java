@@ -54,6 +54,8 @@ public class SecondActivity extends AppCompatActivity {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
+                    System.out.println("Interrupted");
+                    return;
                 }
             }
         }
