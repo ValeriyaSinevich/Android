@@ -1,5 +1,6 @@
 package com.example.valeriyasin.technotracksimple;
 
+import android.content.Context;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,37 +18,38 @@ public class Counter {
     String thousand = "thousand";
     String million = "million";
 
-    Counter() {
-        ones.add("");
-        ones.add("one");
-        ones.add("two");
-        ones.add("three");
-        ones.add("four");
-        ones.add("five");
-        ones.add("six");
-        ones.add("seven");
-        ones.add("eight");
-        ones.add("nine");
-        ones.add("ten");
-        ones.add("eleven");
-        ones.add("twelve");
-        ones.add("thirteen");
-        ones.add("fourteen");
-        ones.add("fifteen");
-        ones.add("sixteen");
-        ones.add("seventeen");
-        ones.add("eighteen");
-        ones.add("nineteen");
+    Counter(Context context) {
+        ones.add(context.getResources().getString(R.string.empty));
+        ones.add(context.getResources().getString(R.string.one));
+        ones.add(context.getResources().getString(R.string.two));
+        ones.add(context.getResources().getString(R.string.three));
+        ones.add(context.getResources().getString(R.string.four));
+        ones.add(context.getResources().getString(R.string.five));
+        ones.add(context.getResources().getString(R.string.six));
+        ones.add(context.getResources().getString(R.string.seven));
+        ones.add(context.getResources().getString(R.string.eight));
+        ones.add(context.getResources().getString(R.string.nine));
+        ones.add(context.getResources().getString(R.string.ten));
+        ones.add(context.getResources().getString(R.string.eleven));
+        ones.add(context.getResources().getString(R.string.twelve));
+        ones.add(context.getResources().getString(R.string.thirteen));
+        ones.add(context.getResources().getString(R.string.fourteen));
+        ones.add(context.getResources().getString(R.string.fifteen));
+        ones.add(context.getResources().getString(R.string.sixteen));
+        ones.add(context.getResources().getString(R.string.seventeen));
+        ones.add(context.getResources().getString(R.string.eighteen));
+        ones.add(context.getResources().getString(R.string.nineteen));
 
-        decades.add("");
-        decades.add("ten");
-        decades.add("twenty");
-        decades.add("thirty");
-        decades.add("fifty");
-        decades.add("sixty");
-        decades.add("seventy");
-        decades.add("eighty");
-        decades.add("ninety");
+        decades.add(context.getResources().getString(R.string.empty));
+        decades.add(context.getResources().getString(R.string.ten));
+        decades.add(context.getResources().getString(R.string.twenty));
+        decades.add(context.getResources().getString(R.string.thirty));
+        decades.add(context.getResources().getString(R.string.fourty));
+        decades.add(context.getResources().getString(R.string.fifty));
+        decades.add(context.getResources().getString(R.string.sixty));
+        decades.add(context.getResources().getString(R.string.seventy));
+        decades.add(context.getResources().getString(R.string.eighty));
+        decades.add(context.getResources().getString(R.string.ninety));
     }
 
     public String parseLessThanThousand(int number) {

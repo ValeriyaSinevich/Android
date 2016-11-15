@@ -1,5 +1,6 @@
 package com.example.valeriyasin.technotracksimple;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -11,17 +12,20 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class SecondActivity extends AppCompatActivity {
 
     boolean launched = false;
     TextView tv;
     TextView st;
-    int savedValue = 0;
+    AtomicInteger savedValue = new AtomicInteger();
     CountingRunner countingRunner;
     Button launchButton;
     Thread countingThread;
     Handler uiHandler;
+    Context contex;
 
     Handler.Callback hc = new Handler.Callback() {
         public boolean handleMessage(Message msg) {
@@ -33,10 +37,16 @@ public class SecondActivity extends AppCompatActivity {
 
     public class CountingRunner extends Thread implements Runnable {
 
+        Context context;
+
+        CountingRunner(Context context) {
+            this.context = context;
+        }
+
         @Override
         public void run() {
-            int i = savedValue;
-            Counter counter = new Counter();
+            int i = savedValue.getAndSet(0);
+            Counter counter = new Counter(context);
             while (!this.isInterrupted()) {
 //                System.out.println(this.isInterrupted());
                 i++;
@@ -62,6 +72,12 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        countingThread.interrupt();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
@@ -69,6 +85,8 @@ public class SecondActivity extends AppCompatActivity {
         tv = (TextView) findViewById(R.id.textView);
         st = (TextView) findViewById(R.id.stateText);
         uiHandler = new Handler(hc);
+        contex = this;
+
 
         launchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +96,7 @@ public class SecondActivity extends AppCompatActivity {
 //                    mHandler.post(countingThread);
 //                    countingRunner = new CountingRunner(tv);
 //                    countingThread = new Thread(countingRunner);
-                    countingThread = new CountingRunner();
+                    countingThread = new CountingRunner(contex);
                     countingThread.start();
 //                    tv.post(countingThread);
 //                    mHandler.post(countingThread);
@@ -114,8 +132,8 @@ public class SecondActivity extends AppCompatActivity {
             launchButton.setText("stop");
             st.setText(savedInstanceState.getString("saved_state"));
             tv.setText(savedInstanceState.getString("saved_value"));
-            savedValue = Integer.parseInt(savedInstanceState.getString("saved_state"));
-            countingThread = new CountingRunner();
+            savedValue.getAndSet(Integer.parseInt(savedInstanceState.getString("saved_state")));
+            countingThread = new CountingRunner(contex);
             countingThread.start();
         }
         else {

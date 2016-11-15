@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">TechnotrackSimple</string>
+    <string name="hundred">hundred</string>
+    <string name="million">million</string>
+    <string name="empty">""</string>
+    <string name="one">one</string>
+    <string name="two">two</string>
+    <string name="three">three</string>
+    <string name="four">four</string>
+    <string name="five">five</string>
+    <string name="six">six</string>
+    <string name="seven">seven</string>
+    <string name="eight">eight</string>
+    <string name="nine">nine</string>
+    <string name="ten">ten</string>
+    <string name="eleven">eleven</string>
+    <string name="twelve">twelve</string>
+    <string name="thirteen">thirteen</string>
+    <string name="fourteen">fourteen</string>
+    <string name="fifteen">fifteen</string>
+    <string name="sixteen">sixteen</string>
+    <string name="seventeen">seventeen</string>
+    <string name="eighteen">eighteen</string>
+    <string name="nineteen">nineteen</string>
+
+
+    <string name="twenty">twenty</string>
+    <string name="thirty">thirty</string>
+    <string name="fourty">fourty</string>
+    <string name="fifty">fifty</string>
+    <string name="sixty">sixty</string>
+    <string name="seventy">seventy</string>
+    <string name="eighty">eighty</string>
+    <string name="ninety">ninety</string>
 </resources>
